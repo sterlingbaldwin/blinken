@@ -171,7 +171,7 @@ api.grid.dimensions = function() {
   }
 };
 
-api.grid.set = function(x, y, rgb) {
+api.grid.setxy = function(x, y, rgb) {
   grid.SetPixelColor(x, y, rgb);
 }
 
@@ -276,6 +276,10 @@ exports.registerSocketHandlers = function() {
     socket.on('get grid html', function(){ socket.emit("grid html", api.grid.html()) });
     socket.on('get grid map', function(){ return api.grid.map(); } );
     socket.on('get grid dimensions', function(){ socket.emit("grid dimensions", api.grid.dimensions() ) });
+    socket.on('get grid setxy', function(x, y, rgb){ 
+      console.log('x -> ' + x + ' y -> ' + y + ' rgb -> ' + rgb);
+      api.grid.setxy(x, y, rgb); 
+    });
 
    socket.on("off", function(data) {
       mixer.clear_channels();
