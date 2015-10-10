@@ -51,7 +51,6 @@ function errorResponse(code, description) {
   };
 }
 
-
 //**************************************
 //
 //              Sources
@@ -171,6 +170,10 @@ api.grid.dimensions = function() {
     height : config.grid.num_panels_y*config.grid.num_pixels_per_panel_y
   }
 };
+
+api.grid.set = function(x, y, rgb) {
+  grid.SetPixelColor(x, y, rgb);
+}
 
 api.grid.html = function(){
   var dim = api.grid.dimensions();
