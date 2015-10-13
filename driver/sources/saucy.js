@@ -89,7 +89,7 @@ function Saucy(grid, options)
           if (volume > 5)
             volume = 5
           grid.setColor('WHITE');
-          console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+v);
+          console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
           grid.circleFill(xy.x, xy.y, volume);
           circles.push({
             'x': xy.x,
