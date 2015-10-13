@@ -5,8 +5,6 @@ var color_utils = require('../color_utils');
 var net = require("http");
 var queryString = require( "querystring" );
 var url = require('url');
-var suspend = require('suspend'),
-    resume = suspend.resume;
 
 var NAME = path.basename(__filename, '.js'); // Our unique name
 
@@ -74,15 +72,15 @@ function Saucy(grid, options)
           if (volume > 5)
             volume = 5
           grid.setColor('WHITE');
+          console.log('ON');
           grid.circleFill(xy.x, xy.y, volume);
-          suspend(function* () {
 
-              yield setTimeout(suspend.resume(), 500); // 10 seconds pass..
-              grid.setColor('BLACK');
-              grid.circleFill(xy.x, xy.y, volume);
-          })();
-          
-
+          setTimeout(function(){
+            grid.setColor('BLACK');
+            grid.circleFill(xy.x, xy.y, volume);
+            console.log('OFF');, 500); // 10 seconds pass..
+          }
+        
           console.log('Drawing circle at x='+xy.x + ' y='+xy.y, ' v='+volume);
           return_string = xy.x + ' ' + xy.y + ' ' + volume;
         }
