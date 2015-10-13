@@ -108,7 +108,7 @@ Saucy.prototype.handleRequest = function(request, response){
 };
 
 Saucy.prototype.step = function() {
-  this.period = 10; 
+  this.period = 50; 
   if (this.mode = 'volume'){
 
     console.log('FRAME');
