@@ -78,7 +78,7 @@ function Saucy(grid, options)
           setTimeout(function(){
             grid.setColor('BLACK');
             grid.circleFill(xy.x, xy.y, volume);
-            console.log('OFF');, 500); // 10 seconds pass..
+            console.log('OFF'), 500); // 10 seconds pass..
           }
         
           console.log('Drawing circle at x='+xy.x + ' y='+xy.y, ' v='+volume);
