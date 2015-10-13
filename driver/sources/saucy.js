@@ -56,7 +56,8 @@ function Saucy(grid, options)
       if (query_strings){
         if (mode == 'pixel-xy'){
           console.log('Setting pixel x='+x + 'y='+y + 'rgb=['+rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ']');
-          grid.setPixelColor(x, y, rgb);
+          var xy = grid.xy(x);
+          grid.setPixelColor(xy.x, xy.y, rgb);
           return_string = x + " " + y + " " + rgb;
         }
         else if (mode == 'pixel-index'){

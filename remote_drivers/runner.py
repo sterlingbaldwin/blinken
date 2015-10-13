@@ -5,7 +5,7 @@ def req(x, y, rgb):
 	requests.get(url)
 
 if __name__=="__main__":
-	rgb = 'ff0000'
+	rgb = '00ff00'
 	for x in range(60):
 		for y in range(48):
 			req(str(x), str(y), rgb)
