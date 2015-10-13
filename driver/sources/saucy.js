@@ -72,14 +72,14 @@ function Saucy(grid, options)
 
           circles.forEach(function(item){
             grid.foreColor=[0x0, 0x0, 0x0];
-            grid.circleFill(item.x, item.y, item.v);
+            grid.circle(item.x, item.y, item.v);
             item.v -= 1;
             if (item.v <= 0){
               console.log('removing cicle at  x=' + item.x + ' y=' + item.y);
               circles.splice(circles.indexOf(item));
             } else{
               grid.foreColor=[0x0, 0x80, 0x0];
-              grid.circleFill(item.x, item.y, item.v);
+              grid.circle(item.x, item.y, item.v);
             }
           });
 
@@ -89,7 +89,7 @@ function Saucy(grid, options)
             volume = 5
           grid.foreColor=[0x0, 0x80, 0x0];
           console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
-          grid.circleFill(xy.x, xy.y, volume);
+          grid.circle(xy.x, xy.y, volume);
           circles.push({
             'x': xy.x,
             'y': xy.y,
