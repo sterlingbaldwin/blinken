@@ -34,6 +34,7 @@ function Saucy(grid, options)
   console.log("------");
 
   circles = [];
+  mode = '';
   
   var server = net.createServer(function(req, res){
     res.writeHead(200, {"Content-Type":"text/plain"});
@@ -74,27 +75,12 @@ function Saucy(grid, options)
             return;
           }
 
-          circles.forEach(function(item){
-            grid.foreColor=[0x0, 0x0, 0x0];
-            grid.circle(item.x, item.y, item.v);
-            item.v -= 1;
-            if (item.v <= 0){
-              console.log('removing cicle at  x=' + item.x + ' y=' + item.y);
-              circles.splice(circles.indexOf(item));
-              grid.foreColor=[0x0, 0x0, 0x0];
-              grid.circle(item.x, item.y, item.v);
-            } else{
-              grid.foreColor=[0x0, 0x80, 0x0];
-              grid.circle(item.x, item.y, item.v);
-            }
-          });
-
           //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
           if (volume > 5)
             volume = 5
           grid.foreColor=[0x0, 0x80, 0x0];
-          console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
+          //console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
           grid.circle(xy.x, xy.y, volume);
           circles.push({
             'x': xy.x,
@@ -122,8 +108,26 @@ Saucy.prototype.handleRequest = function(request, response){
 };
 
 Saucy.prototype.step = function() {
-  this.period = 1; 
- 
+  this.period = 10; 
+  if (this.mode = 'volume'){
+
+    console.log('FRAME');
+    console.log('circles.length = ' + circles.length);
+    this.circles.forEach(function(item){
+      this.grid.foreColor=[0x0, 0x0, 0x0];
+      this.grid.circle(item.x, item.y, item.v);
+      item.v -= 1;
+      if (item.v <= 0){
+        this.circles.splice(circles.indexOf(item));
+        this.grid.foreColor=[0x0, 0x0, 0x0];
+        this.grid.circle(item.x, item.y, item.v);
+      } else{
+        this.grid.foreColor=[0x0, 0x80, 0x0];
+        this.grid.circle(item.x, item.y, item.v);
+      }
+    });
+  }
+
   // We changed the grid
   return true;
 };
