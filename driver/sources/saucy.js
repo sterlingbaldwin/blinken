@@ -83,7 +83,7 @@ function Saucy(grid, options)
             }
           });
 
-          the coords are stored as the pixel index in x
+          //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
           if (volume > 5)
             volume = 5
