@@ -70,18 +70,18 @@ function Saucy(grid, options)
         }
         else if (mode == 'volume'){
 
-          circles.forEach(function(item){
-            grid.setColor('BLACK');
-            grid.circleFill(item.x, item.y, item.v);
-            item.v -= 1;
-            if (item.v <= 0){
-              console.log('removing cicle at  x=' + xy.x + ' y=' + xy.y);
-              circles.splice(circles.indexOf(item));
-            } else{
-              grid.setColor('WHITE');
-              grid.circleFill(item.x, item.y, item.v);
-            }
-          });
+          // circles.forEach(function(item){
+          //   grid.setColor('BLACK');
+          //   grid.circleFill(item.x, item.y, item.v);
+          //   item.v -= 1;
+          //   if (item.v <= 0){
+          //     console.log('removing cicle at  x=' + item.x + ' y=' + item.y);
+          //     circles.splice(circles.indexOf(item));
+          //   } else{
+          //     grid.setColor('WHITE');
+          //     grid.circleFill(item.x, item.y, item.v);
+          //   }
+          // });
 
           //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
