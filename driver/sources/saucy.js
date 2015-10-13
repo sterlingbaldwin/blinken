@@ -82,7 +82,7 @@ function Saucy(grid, options)
               grid.circleFill(item.x, item.y, item.v);
             }
           });
-          circle.length = 0;
+          circles.length = 0;
 
           //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
