@@ -92,6 +92,7 @@ function Saucy(grid, options)
 
         res.end(return_string);
       }
+      res.end('');
     }
   
   });
