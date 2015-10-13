@@ -59,7 +59,7 @@ function J_saucy(grid, options)
         else if (mode == 'pixel-index'){
           //the index of the pixel is in x
           xy = this.grid.xy(x);
-          console.log('Setting pixel x=' + )
+          console.log('Setting pixel x=' + x);
         } 
 
         res.end(x + " " + y + " " + rgb);
