@@ -21,15 +21,14 @@ function hexToRgb(hex) {
 }
 
 
-// This source loops through the color wheel continuously, producing
-// a rainbow effect cycling through each pixel.
+// This source listens on port 1338 
 //
 // options = {}, optional, valid keys:
-//   period = number of milliseconds between steps
-function J_saucy(grid, options)
+// period = number of milliseconds between steps
+function Saucy(grid, options)
 {
   options = options || {};
-  J_saucy.super_.call(this, NAME, grid, options);
+  Saucy.super_.call(this, NAME, grid, options);
   console.log("source object");
   console.log(this);
   console.log("------");
@@ -66,7 +65,6 @@ function J_saucy(grid, options)
           console.log('Setting pixel x=' + x);
         }
         else if (mode == 'volume'){
-          this.grid.setColor('WHITE');
           this.grid.circleFill(x, y, volume);
           console.log('Drawing circle at x='+x + 'y='+y, 'v='+volume);
           return_string = x + ' ' + y + ' ' + volume;
@@ -83,14 +81,13 @@ function J_saucy(grid, options)
 }
 
 // Set up inheritance from Source
-util.inherits(J_saucy, Source);
+util.inherits(Saucy, Source);
 
-J_saucy.prototype.handleRequest = function(request, response){
-  console.log(request);
+Saucy.prototype.handleRequest = function(request, response){
   response.writeHead(200, {"Content-Type":"text/plain"});
 };
 
-J_saucy.prototype.step = function() {
+Saucy.prototype.step = function() {
   this.period = 1; 
  
   // We changed the grid
@@ -98,8 +95,8 @@ J_saucy.prototype.step = function() {
 };
 
 // Since we don't have any additional options, copy default
-J_saucy.options_spec = Source.options_spec;
+Saucy.options_spec = Source.options_spec;
 
 // Export public interface
-exports.constructor = J_saucy;
+exports.constructor = Saucy;
 exports.name = NAME;
