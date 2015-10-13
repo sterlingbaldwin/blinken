@@ -81,8 +81,8 @@ function Saucy(grid, options)
           })();
           
 
-          console.log('Drawing circle at x='+x + ' y='+y, ' v='+volume);
-          return_string = x + ' ' + y + ' ' + volume;
+          console.log('Drawing circle at x='+xy.x + ' y='+xy.y, ' v='+volume);
+          return_string = xy.x + ' ' + xy.y + ' ' + volume;
         }
 
         res.end(return_string);
