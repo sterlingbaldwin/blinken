@@ -113,19 +113,19 @@ Saucy.prototype.step = function() {
 
     console.log('FRAME');
     console.log('circles.length = ' + circles.length);
-    circles.forEach(function(item, this){
+    for (var i = 0; i < circles.length; i++){
       this.grid.foreColor=[0x0, 0x0, 0x0];
-      this.grid.circle(item.x, item.y, item.v);
-      item.v -= 1;
-      if (item.v <= 0){
-        circles.splice(circles.indexOf(item));
+      this.grid.circle(circles[i].x, circles[i].y, circles[i].v);
+      circles[i].v -= 1;
+      if (circles[i].v <= 0){
+        circles.splice(i, 1);
         this.grid.foreColor=[0x0, 0x0, 0x0];
-        this.grid.circle(item.x, item.y, item.v);
+        this.grid.circle(circles[i].x, circles[i].y, circles[i].v);
       } else{
         this.grid.foreColor=[0x0, 0x80, 0x0];
-        this.grid.circle(item.x, item.y, item.v);
+        this.grid.circle(circles[i].x, circles[i].y, circles[i].v);
       }
-    });
+    }
   }
 
   // We changed the grid
