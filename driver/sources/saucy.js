@@ -35,26 +35,26 @@ function J_saucy(grid, options)
   console.log("------");
   
   var server = net.createServer(function(req, res){
-  	res.writeHead(200, {"Content-Type":"text/plain"});
+    res.writeHead(200, {"Content-Type":"text/plain"});
 
-   	// parses the request url
+    // parses the request url
     var theUrl = url.parse( req.url );
 
-  	if (theUrl.query) {
+    if (theUrl.query) {
 
-  		var query_strings = queryString.parse(theUrl.query);
+      var query_strings = queryString.parse(theUrl.query);
 
       var mode = 'pixel-xy';
-  		var x, y, rgb;
+      var x, y, rgb;
       var volume = 0;
       var return_string = '';
-  		if (query_strings && query_strings["x"]) { console.log("x is " + query_strings["x"]); x = query_strings["x"] }
-  		if (query_strings && query_strings["y"]) {  y = query_strings["y"] }
-  		if (query_strings && query_strings["rgb"]) { rgb = hexToRgb(query_strings["rgb"]) }
+      if (query_strings && query_strings["x"]) {  x = query_strings["x"] }
+      if (query_strings && query_strings["y"]) {  y = query_strings["y"] }
+      if (query_strings && query_strings["rgb"]) { rgb = hexToRgb(query_strings["rgb"]) }
       if (query_strings && query_strings["mode"]) { mode = query_strings["mode"] }
-  		if (query_strings && query_strings["volume"]) { mode = query_strings["volume"] }
+      if (query_strings && query_strings["volume"]) { volume = query_strings["volume"] }
 
-  		if (query_strings){
+      if (query_strings){
         if (mode == 'pixel-xy'){
           console.log('Setting pixel x='+x + 'y='+y + 'rgb=['+rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ']');
           grid.setPixelColor(x, y, rgb);
@@ -74,11 +74,11 @@ function J_saucy(grid, options)
 
         res.end(return_string);
       }
-  	}
-	
+    }
+  
   });
   server.listen(port, function (err) {
-    	console.log("J_saucy is listening on port %s", port);
+      console.log("saucy is listening on port %s", port);
   });
 }
 
@@ -86,8 +86,8 @@ function J_saucy(grid, options)
 util.inherits(J_saucy, Source);
 
 J_saucy.prototype.handleRequest = function(request, response){
-	console.log(request);
-	response.writeHead(200, {"Content-Type":"text/plain"});
+  console.log(request);
+  response.writeHead(200, {"Content-Type":"text/plain"});
 };
 
 J_saucy.prototype.step = function() {
