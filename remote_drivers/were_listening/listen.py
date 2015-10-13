@@ -4,7 +4,10 @@ import random
 import math
 def req(x, v):
     url = 'http://192.168.1.99:1338?x=' + x + '&volume=' + v + '&mode=volume'
-    requests.get(url)
+    try:
+        requests.get(url, timeout=0.1)
+    except requests.exceptions.Timeout:
+        pass
 
 
 def translate(x, y):
@@ -21,10 +24,10 @@ while True:
     # Read data from device
     l,data = inp.read()
     if l:
-        v = math.floor(audioop.max(data, 2)/70)
-        if v > 3:
-            x = random.randint(1, 20)
-            y = random.randint(1, 20)
+        v = math.floor(audioop.max(data, 2)/100)
+        if v > 5:
+            x = random.randint(1, 60)
+            y = random.randint(1, 48)
             print(x, y, v)
             req(str(translate(x,y)), str(v))
-        time.sleep(.1)
+        time.sleep(.001)

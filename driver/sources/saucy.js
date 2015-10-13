@@ -112,8 +112,6 @@ Saucy.prototype.step = function() {
   this.period = 50; 
   if (this.mode = 'volume'){
 
-    console.log('FRAME');
-    console.log('circles.length = ' + circles.length);
     for (var i = 0; i < circles.length; i++){
       this.grid.foreColor=[0x0, 0x0, 0x0];
       this.grid.circle(circles[i].x, circles[i].y, circles[i].v);
