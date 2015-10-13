@@ -70,6 +70,10 @@ function Saucy(grid, options)
         }
         else if (mode == 'volume'){
 
+          if (circles.length > 5){
+            return;
+          }
+
           circles.forEach(function(item){
             grid.foreColor=[0x0, 0x0, 0x0];
             grid.circle(item.x, item.y, item.v);
@@ -77,6 +81,8 @@ function Saucy(grid, options)
             if (item.v <= 0){
               console.log('removing cicle at  x=' + item.x + ' y=' + item.y);
               circles.splice(circles.indexOf(item));
+              grid.foreColor=[0x0, 0x0, 0x0];
+              grid.circle(item.x, item.y, item.v);
             } else{
               grid.foreColor=[0x0, 0x80, 0x0];
               grid.circle(item.x, item.y, item.v);
