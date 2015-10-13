@@ -113,12 +113,12 @@ Saucy.prototype.step = function() {
 
     console.log('FRAME');
     console.log('circles.length = ' + circles.length);
-    this.circles.forEach(function(item){
+    circles.forEach(function(item){
       this.grid.foreColor=[0x0, 0x0, 0x0];
       this.grid.circle(item.x, item.y, item.v);
       item.v -= 1;
       if (item.v <= 0){
-        this.circles.splice(circles.indexOf(item));
+        circles.splice(circles.indexOf(item));
         this.grid.foreColor=[0x0, 0x0, 0x0];
         this.grid.circle(item.x, item.y, item.v);
       } else{
