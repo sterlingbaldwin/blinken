@@ -61,13 +61,17 @@ function Saucy(grid, options)
         }
         else if (mode == 'pixel-index'){
           //the index of the pixel is in x
-          xy = grid.xy(x);
-          console.log('Setting pixel x=' + x);
+          //xy = grid.xy(x);
+          //console.log('Setting pixel x=' + x);
         }
         else if (mode == 'volume'){
-          grid.setColor('WHITE');
-          grid.circleFill(x, y, volume);
-          console.log('Drawing circle at x='+x + 'y='+y, 'v='+volume);
+          //the coords are stored as the pixel index in x
+          var xy = grid.xy(x);
+          grid.circleFill(xy.x, xy.y, volume);
+          if (volume > 10)
+            volume = 10
+
+          console.log('Drawing circle at x='+x + ' y='+y, ' v='+volume);
           return_string = x + ' ' + y + ' ' + volume;
         }
 

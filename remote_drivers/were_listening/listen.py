@@ -3,6 +3,7 @@ import requests
 import random
 import math
 def req(x, y, v):
+    x = (y * 60) + x
     url = 'http://192.168.1.99:1338?x=' + x + '&y=' + y + '&volume=' + v + '&mode=volume'
     requests.get(url)
 
@@ -18,9 +19,9 @@ while True:
     l,data = inp.read()
     if l:
         v = str(math.floor(audioop.max(data, 2)/70))
-        if v > 1:
-            x = str(random.randint(1, 60))
-            y = str(random.randint(1, 48))
+        if v > 3:
+            x = str(random.randint(1, 20))
+            y = str(random.randint(1, 20))
             print(x, y, v)
             req(x, y, v)
         time.sleep(.005)
