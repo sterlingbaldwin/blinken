@@ -95,9 +95,9 @@ function Saucy(grid, options)
           //   'y': xy.y,
           //   'v': volume
           // });
-          console.log('circle color pre ' + grid.ForeColor);
+          console.log('circle color pre ' + grid.foreColor);
           grid.setColor('WHITE');
-          console.log('circle color post ' + grid.ForeColor);
+          console.log('circle color post ' + grid.foreColor);
           grid.circleFill(0, 0, 10);
 
           return_string = xy.x + ' ' + xy.y + ' ' + volume;
