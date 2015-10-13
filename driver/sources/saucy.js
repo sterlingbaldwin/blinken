@@ -61,11 +61,12 @@ function Saucy(grid, options)
         }
         else if (mode == 'pixel-index'){
           //the index of the pixel is in x
-          xy = this.grid.xy(x);
+          xy = grid.xy(x);
           console.log('Setting pixel x=' + x);
         }
         else if (mode == 'volume'){
-          this.grid.circleFill(x, y, volume);
+          grid.setColor('WHITE');
+          grid.circleFill(x, y, volume);
           console.log('Drawing circle at x='+x + 'y='+y, 'v='+volume);
           return_string = x + ' ' + y + ' ' + volume;
         }
