@@ -84,20 +84,22 @@ function Saucy(grid, options)
           // });
 
           //the coords are stored as the pixel index in x
-          var xy = grid.xy(x);
-          if (volume > 5)
-            volume = 5
+          // var xy = grid.xy(x);
+          // if (volume > 5)
+          //   volume = 5
+          // grid.setColor('WHITE');
+          // console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
+          // grid.circleFill(xy.x, xy.y, volume);
+          // circles.push({
+          //   'x': xy.x,
+          //   'y': xy.y,
+          //   'v': volume
+          // });
+          console.log('circle color pre ' + grid.ForeColor);
           grid.setColor('WHITE');
-          console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
-          grid.circleFill(xy.x, xy.y, volume);
-          circles.push({
-            'x': xy.x,
-            'y': xy.y,
-            'v': volume
-          });
+          console.log('circle color post ' + grid.ForeColor);
+          grid.circleFill(0, 0, 10);
 
-        
-          console.log('Drawing circle at x='+xy.x + ' y='+xy.y, ' v='+volume);
           return_string = xy.x + ' ' + xy.y + ' ' + volume;
         }
 
