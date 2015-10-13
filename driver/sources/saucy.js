@@ -32,6 +32,8 @@ function Saucy(grid, options)
   console.log("source object");
   console.log(this);
   console.log("------");
+
+  circles = [];
   
   var server = net.createServer(function(req, res){
     res.writeHead(200, {"Content-Type":"text/plain"});
@@ -67,20 +69,34 @@ function Saucy(grid, options)
           //console.log('Setting pixel x=' + x);
         }
         else if (mode == 'volume'){
+
+          circles.forEach(function(item){
+            grid.setColor('BLACK');
+            grid.circleFill(item.x, item.y, item.v);
+            item.v -= 1;
+            if (item.v <= 0){
+              console.log('removing cicle at  x=' + xy.x + ' y=' + xy.y);
+              circles.splice(circles.indexOf(item));
+            } else{
+              grid.setColor('WHITE');
+              grid.circleFill(item.x, item.y, item.v);
+            }
+          });
+          circle.length = 0;
+
           //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
           if (volume > 5)
             volume = 5
           grid.setColor('WHITE');
-          console.log('ON');
+          console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+v);
           grid.circleFill(xy.x, xy.y, volume);
+          circles.push({
+            'x': xy.x,
+            'y': xy.y,
+            'v': volume
+          });
 
-          setTimeout(function(){
-            grid.setColor('BLACK');
-            grid.circleFill(xy.x, xy.y, volume);
-            console.log('OFF')
-          }, 500); // 10 seconds pass..
-          
         
           console.log('Drawing circle at x='+xy.x + ' y='+xy.y, ' v='+volume);
           return_string = xy.x + ' ' + xy.y + ' ' + volume;
