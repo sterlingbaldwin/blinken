@@ -46,23 +46,33 @@ function J_saucy(grid, options)
 
       var mode = 'pixel-xy';
   		var x, y, rgb;
+      var volume = 0;
+      var return_string = '';
   		if (query_strings && query_strings["x"]) { console.log("x is " + query_strings["x"]); x = query_strings["x"] }
   		if (query_strings && query_strings["y"]) {  y = query_strings["y"] }
   		if (query_strings && query_strings["rgb"]) { rgb = hexToRgb(query_strings["rgb"]) }
       if (query_strings && query_strings["mode"]) { mode = query_strings["mode"] }
-  		
+  		if (query_strings && query_strings["volume"]) { mode = query_strings["volume"] }
+
   		if (query_strings){
         if (mode == 'pixel-xy'){
           console.log('Setting pixel x='+x + 'y='+y + 'rgb=['+rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ']');
           grid.setPixelColor(x, y, rgb);
+          return_string = x + " " + y + " " + rgb;
         }
         else if (mode == 'pixel-index'){
           //the index of the pixel is in x
           xy = this.grid.xy(x);
           console.log('Setting pixel x=' + x);
-        } 
+        }
+        else if (mode == 'volume'){
+          this.grid.setColor('WHITE');
+          this.grid.circleFill(x, y, volume);
+          console.log('Drawing circle at x='+x + 'y='+y, 'v='+volume);
+          return_string = x + ' ' + y + ' ' + volume;
+        }
 
-        res.end(x + " " + y + " " + rgb);
+        res.end(return_string);
       }
   	}
 	

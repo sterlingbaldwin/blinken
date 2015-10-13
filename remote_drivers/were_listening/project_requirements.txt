@@ -1,0 +1,4 @@
+This project requires:
+
+1) libasound2-dev
+2) pyASLAAUDIO
