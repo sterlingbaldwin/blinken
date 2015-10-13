@@ -118,9 +118,9 @@ Saucy.prototype.step = function() {
       this.grid.circle(circles[i].x, circles[i].y, circles[i].v);
       circles[i].v -= 1;
       if (circles[i].v <= 0){
-        circles.splice(i, 1);
         this.grid.foreColor=[0x0, 0x0, 0x0];
         this.grid.circle(circles[i].x, circles[i].y, circles[i].v);
+        circles.splice(i, 1);
       } else{
         this.grid.foreColor=[0x0, 0x80, 0x0];
         this.grid.circle(circles[i].x, circles[i].y, circles[i].v);
