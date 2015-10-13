@@ -5,6 +5,8 @@ var color_utils = require('../color_utils');
 var net = require("http");
 var queryString = require( "querystring" );
 var url = require('url');
+var suspend = require('suspend'),
+    resume = suspend.resume;
 
 var NAME = path.basename(__filename, '.js'); // Our unique name
 
