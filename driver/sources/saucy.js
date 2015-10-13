@@ -69,9 +69,17 @@ function Saucy(grid, options)
         else if (mode == 'volume'){
           //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
-          grid.circleFill(xy.x, xy.y, volume);
           if (volume > 5)
             volume = 5
+          grid.setColor('WHITE');
+          grid.circleFill(xy.x, xy.y, volume);
+          suspend(function* () {
+
+              yield setTimeout(suspend.resume(), 500); // 10 seconds pass..
+              grid.setColor('BLACK');
+              grid.circleFill(xy.x, xy.y, volume);
+          })();
+          
 
           console.log('Drawing circle at x='+x + ' y='+y, ' v='+volume);
           return_string = x + ' ' + y + ' ' + volume;

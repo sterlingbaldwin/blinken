@@ -21,10 +21,10 @@ while True:
     # Read data from device
     l,data = inp.read()
     if l:
-        v = str(math.floor(audioop.max(data, 2)/70))
+        v = math.floor(audioop.max(data, 2)/70)
         if v > 3:
             x = random.randint(1, 20)
             y = random.randint(1, 20)
             print(x, y, v)
-            req(str(translate(x,y)), v)
-        time.sleep(.005)
+            req(str(translate(x,y)), str(v))
+        time.sleep(.1)
