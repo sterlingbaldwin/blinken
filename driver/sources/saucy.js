@@ -55,6 +55,7 @@ function Saucy(grid, options)
 
       if (query_strings){
         if (mode == 'pixel-xy'){
+
           var xy = grid.xy(x);
           console.log('Setting pixel x='+xy.x + 'y='+xy.y + 'rgb=['+rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ']');
           grid.setPixelColor(xy.x, xy.y, rgb);
@@ -69,8 +70,8 @@ function Saucy(grid, options)
           //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
           grid.circleFill(xy.x, xy.y, volume);
-          if (volume > 10)
-            volume = 10
+          if (volume > 5)
+            volume = 5
 
           console.log('Drawing circle at x='+x + ' y='+y, ' v='+volume);
           return_string = x + ' ' + y + ' ' + volume;

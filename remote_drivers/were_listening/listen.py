@@ -2,10 +2,13 @@ import alsaaudio, time, audioop
 import requests
 import random
 import math
-def req(x, y, v):
-    x = (y * 60) + x
-    url = 'http://192.168.1.99:1338?x=' + x + '&y=' + y + '&volume=' + v + '&mode=volume'
+def req(x, v):
+    url = 'http://192.168.1.99:1338?x=' + x + '&volume=' + v + '&mode=volume'
     requests.get(url)
+
+
+def translate(x, y):
+    return (y * 60 ) + x 
 
 inp = alsaaudio.PCM(alsaaudio.PCM_CAPTURE,alsaaudio.PCM_NONBLOCK)
 inp.setchannels(1)
@@ -20,8 +23,8 @@ while True:
     if l:
         v = str(math.floor(audioop.max(data, 2)/70))
         if v > 3:
-            x = str(random.randint(1, 20))
-            y = str(random.randint(1, 20))
+            x = random.randint(1, 20)
+            y = random.randint(1, 20)
             print(x, y, v)
-            req(x, y, v)
+            req(str(translate(x,y)), v)
         time.sleep(.005)
