@@ -70,34 +70,33 @@ function Saucy(grid, options)
         }
         else if (mode == 'volume'){
 
-          // circles.forEach(function(item){
-          //   grid.setColor('BLACK');
-          //   grid.circleFill(item.x, item.y, item.v);
-          //   item.v -= 1;
-          //   if (item.v <= 0){
-          //     console.log('removing cicle at  x=' + item.x + ' y=' + item.y);
-          //     circles.splice(circles.indexOf(item));
-          //   } else{
-          //     grid.setColor('WHITE');
-          //     grid.circleFill(item.x, item.y, item.v);
-          //   }
-          // });
+          circles.forEach(function(item){
+            grid.setColor('0,0,0');
+            grid.circleFill(item.x, item.y, item.v);
+            item.v -= 1;
+            if (item.v <= 0){
+              console.log('removing cicle at  x=' + item.x + ' y=' + item.y);
+              circles.splice(circles.indexOf(item));
+            } else{
+              grid.setColor('0,128,0');
+              grid.circleFill(item.x, item.y, item.v);
+            }
+          });
 
-          //the coords are stored as the pixel index in x
-          // var xy = grid.xy(x);
-          // if (volume > 5)
-          //   volume = 5
-          // grid.setColor('WHITE');
-          // console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
-          // grid.circleFill(xy.x, xy.y, volume);
-          // circles.push({
-          //   'x': xy.x,
-          //   'y': xy.y,
-          //   'v': volume
-          // });
-          console.log('circle color pre ' + grid.foreColor);
-          grid.setColor('WHITE');
-          console.log('circle color post ' + grid.foreColor);
+          the coords are stored as the pixel index in x
+          var xy = grid.xy(x);
+          if (volume > 5)
+            volume = 5
+          grid.setColor('0,128,0');
+          console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
+          grid.circleFill(xy.x, xy.y, volume);
+          circles.push({
+            'x': xy.x,
+            'y': xy.y,
+            'v': volume
+          });
+          //console.log('circle color pre ' + grid.foreColor);
+          grid.setColor('0,128,0');
           grid.circleFill(0, 0, 10);
 
           return_string = xy.x + ' ' + xy.y + ' ' + volume;
