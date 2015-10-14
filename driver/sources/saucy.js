@@ -77,8 +77,8 @@ function Saucy(grid, options)
 
           //the coords are stored as the pixel index in x
           var xy = grid.xy(x);
-          if (volume > 5)
-            volume = 5
+          if (volume > 10)
+            volume = 10
           grid.foreColor=[0x0, 0x80, 0x0];
           //console.log('creating new circle at x=' + xy.x + ' y=' + xy.y + ' r='+volume);
           grid.circle(xy.x, xy.y, volume);
@@ -109,7 +109,7 @@ Saucy.prototype.handleRequest = function(request, response){
 };
 
 Saucy.prototype.step = function() {
-  this.period = 50; 
+  this.period = 80; 
   if (this.mode = 'volume'){
 
     for (var i = 0; i < circles.length; i++){
