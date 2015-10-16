@@ -72,7 +72,12 @@ function Saucy(grid, options)
           //console.log('Setting pixel x=' + x);
         }
         else if (mode = 'grid'){
-          grid.clear();
+          for(var i = 0; i < 60; i++){
+            for(var j = 0; j < 48; j++){
+              var xy = grid.xy((i * 60) + j);
+              grid.setPixelColor(xy.x, xy.y, [0x0, 0x0, 0x0]);
+            }
+          }
           var xy;
           for (var i = 0; i < grid_data.length; i++){
             var logstring = '';
