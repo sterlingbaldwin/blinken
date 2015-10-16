@@ -50,11 +50,14 @@ function Saucy(grid, options)
       var x, y, rgb;
       var volume = 0;
       var return_string = '';
+      var grid = '';
       if (query_strings && query_strings["x"]) {  x = query_strings["x"] }
       if (query_strings && query_strings["y"]) {  y = query_strings["y"] }
       if (query_strings && query_strings["rgb"]) { rgb = hexToRgb(query_strings["rgb"]) }
       if (query_strings && query_strings["mode"]) { mode = query_strings["mode"] }
       if (query_strings && query_strings["volume"]) { volume = query_strings["volume"] }
+      if (query_strings && query_strings["grid"]) { volume = query_strings["grid"] }
+
 
       if (query_strings){
         if (mode == 'pixel-xy'){
@@ -68,6 +71,10 @@ function Saucy(grid, options)
           //the index of the pixel is in x
           //xy = grid.xy(x);
           //console.log('Setting pixel x=' + x);
+        }
+        else if (mode = 'grid'){
+          grid = JSON.parse(grid);
+          console.log(grid);
         }
         else if (mode == 'volume'){
 
