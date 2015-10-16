@@ -76,13 +76,14 @@ function Saucy(grid, options)
           for (var i = 0; i < grid_data.length; i++){
             var logstring = '';
             for (var j = 0; j < grid_data[i].length; j++){
+              console.log(grid_data[i].length);
               if(grid_data[i][j] != 0){
                 xy = grid.xy((i * 60) + j)
                 grid.setPixelColor(xy.x, xy.y, [0x0, 0x80, 0x0]);
                 logstring += '*';
               }
             }
-            console.log(logstring);
+            //console.log(logstring);
           }
         }
         else if (mode == 'volume'){
