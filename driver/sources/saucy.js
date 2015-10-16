@@ -71,8 +71,8 @@ function Saucy(grid, options)
           //xy = grid.xy(x);
           //console.log('Setting pixel x=' + x);
         }
-        var xy;
         else if (mode = 'grid'){
+          var xy;
           for (var i = 0; i < grid_data.length; i++){
             for (var j = 0; j < grid_data[i].length; j++){
               xy = grid.xy((j * 60) + i)
