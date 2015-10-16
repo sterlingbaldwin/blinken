@@ -73,7 +73,6 @@ function Saucy(grid, options)
           //console.log('Setting pixel x=' + x);
         }
         else if (mode = 'grid'){
-          grid = JSON.parse(grid);
           console.log(grid);
         }
         else if (mode == 'volume'){
