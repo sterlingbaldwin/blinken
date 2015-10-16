@@ -55,7 +55,7 @@ function Saucy(grid, options)
       if (query_strings && query_strings["rgb"]) { rgb = hexToRgb(query_strings["rgb"]) }
       if (query_strings && query_strings["mode"]) { mode = query_strings["mode"] }
       if (query_strings && query_strings["volume"]) { volume = query_strings["volume"] }
-      if (query_strings && query_strings["data"]) { grid_data = query_strings["data"] }
+      if (query_strings && query_strings["data"]) { grid_data = JSON.parse(query_strings["data"]) }
 
 
       if (query_strings){
