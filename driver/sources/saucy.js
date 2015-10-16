@@ -45,18 +45,17 @@ function Saucy(grid, options)
     if (theUrl.query) {
 
       var query_strings = queryString.parse(theUrl.query);
-      console.log(query_strings)
       var mode = 'pixel-xy';
       var x, y, rgb;
       var volume = 0;
       var return_string = '';
-      var grid = '';
+      var grid_data = '';
       if (query_strings && query_strings["x"]) {  x = query_strings["x"] }
       if (query_strings && query_strings["y"]) {  y = query_strings["y"] }
       if (query_strings && query_strings["rgb"]) { rgb = hexToRgb(query_strings["rgb"]) }
       if (query_strings && query_strings["mode"]) { mode = query_strings["mode"] }
       if (query_strings && query_strings["volume"]) { volume = query_strings["volume"] }
-      if (query_strings && query_strings["data"]) { grid = query_strings["data"] }
+      if (query_strings && query_strings["data"]) { grid_data = query_strings["data"] }
 
 
       if (query_strings){
@@ -73,8 +72,8 @@ function Saucy(grid, options)
           //console.log('Setting pixel x=' + x);
         }
         else if (mode = 'grid'){
-          for (var i = 0; i < grid.length; i++){
-            for (var j = 0; j < grid[i].length; j++){
+          for (var i = 0; i < grid_data.length; i++){
+            for (var j = 0; j < grid_data[i].length; j++){
               grid.setPixelColor(i, j, [0x0, 0x80, 0x0]);
             }
           }
