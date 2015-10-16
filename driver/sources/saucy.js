@@ -74,7 +74,7 @@ function Saucy(grid, options)
         }
         else if (mode = 'grid'){
           for (var i = 0; i < grid.length; i++){
-            for (var j = 0; j < grid[i].length, j++){
+            for (var j = 0; j < grid[i].length; j++){
               grid.setPixelColor(i, j, [0x0, 0x80, 0x0]);
             }
           }
