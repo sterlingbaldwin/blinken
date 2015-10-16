@@ -45,7 +45,7 @@ function Saucy(grid, options)
     if (theUrl.query) {
 
       var query_strings = queryString.parse(theUrl.query);
-
+      console.log(query_strings)
       var mode = 'pixel-xy';
       var x, y, rgb;
       var volume = 0;
